@@ -15,16 +15,19 @@ public class BallLauncher : MonoBehaviour
     
     private Vector2 _start;
     private Vector2 _end;
-    private Vector2 _constantEndPos;
     private Vector2 _direction;
     private float _angle;
 
     private int _roundTo;
 
+    SpriteRenderer sr;
+
 
     private void Start()
     {
         lr.enabled = false;
+        sr = GetComponent<SpriteRenderer>();
+        sr.enabled = false;
     }
 
     void Update()
@@ -80,7 +83,6 @@ public class BallLauncher : MonoBehaviour
             _end = camera.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        Debug.Log(_end);
 
         if (!camera) return;
         if (!ball) return;
@@ -88,6 +90,8 @@ public class BallLauncher : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            sr.enabled = true;
+            transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
             _start = camera.ScreenToWorldPoint(Input.mousePosition);
             lr.enabled = true;
         }
@@ -106,4 +110,6 @@ public class BallLauncher : MonoBehaviour
             lr.SetPosition(1, new Vector3(_end.x, _end.y, 0));
         }
     }
+
+    
 }
