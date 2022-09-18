@@ -5,12 +5,14 @@ using UnityEngine;
 public class WallBounces : MonoBehaviour
 {
     public GameManager gM;
+    public DeathAnimationController DAC;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             gM.deactivationAmount++;
-            gameObject.SetActive(false);
+            DAC.Die();
         }
     }
 }

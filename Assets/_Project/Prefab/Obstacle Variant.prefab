@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5366182562789573767, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
+      propertyPath: m_TagString
+      value: CircleObs
+      objectReference: {fileID: 0}
     - target: {fileID: 6876594052408455874, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
       propertyPath: m_Controller
       value: 
