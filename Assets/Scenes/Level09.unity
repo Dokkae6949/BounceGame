@@ -291,11 +291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366182562789573761, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5366182562789573761, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5366182562789573761, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -617,7 +617,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d2aaee44c7c22f5418a089c2db346af5, type: 3}
 --- !u!1 &2065253529 stripped
 GameObject:
