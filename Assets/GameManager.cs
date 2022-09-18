@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
 
 
 public class GameManager : MonoBehaviour
@@ -11,17 +10,23 @@ public class GameManager : MonoBehaviour
     public int deactivationAmount = 0;
     public GameObject player;
 
-    private async void Update()
+    private void Update()
     {
-        if (deactivationAmount == obstacles.Length)
-        {
-            await Task.Delay(2000);
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        StartCoroutine(nextScene());
         
         if(Mathf.Abs(player.transform.position.x) > 30 || Mathf.Abs(player.transform.position.y) > 15 )
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    IEnumerator nextScene()
+    {
+        if (deactivationAmount == obstacles.Length)
+        {
+            yield return new WaitForSeconds(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            deactivationAmount = 0;
         }
     }
 }

@@ -35,6 +35,7 @@ public class BallLauncher : MonoBehaviour
         _end = camera.ScreenToWorldPoint(Input.mousePosition);
         _direction = _end - _start;
         _angle = Vector2.Angle(Vector2.right, _direction);
+
         if(camera.ScreenToWorldPoint(Input.mousePosition).y < _start.y)
         {
             _angle = _angle * -1;
@@ -88,19 +89,27 @@ public class BallLauncher : MonoBehaviour
         if (!ball) return;
         if (!canLaunch) return;
 
+        
+
         if (Input.GetMouseButtonDown(0))
         {
-            sr.enabled = true;
+            if(canLaunch)
+            {
+                sr.enabled = true;
+            }
             transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
             _start = camera.ScreenToWorldPoint(Input.mousePosition);
             lr.enabled = true;
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            var dir = _start - _end;
-            ball.AddForce(power * dir.magnitude * dir.normalized, ForceMode2D.Impulse);
+            if(canLaunch)
+            {
+                var dir = _start - _end;
+                ball.AddForce(power * dir.normalized, ForceMode2D.Impulse);
+                lr.enabled = false;
+            }
             canLaunch = false;
-            lr.enabled = false;
         }
 
 
@@ -111,5 +120,20 @@ public class BallLauncher : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Legal Zone")
+        {
+            canLaunch = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Legal Zone")
+        {
+            canLaunch = false;
+        }
+    }
+
 }

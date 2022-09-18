@@ -6,7 +6,7 @@ public class MovingObstacle : MonoBehaviour
 {
     public Vector2 from;
     public Vector2 to;
-    private float speed = .1f;
+    public float speed = .1f;
     Vector2 dir;
 
     bool fromOrTo = false;
@@ -19,8 +19,6 @@ public class MovingObstacle : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(fromOrTo);
-        Debug.Log(dir);
         if(!fromOrTo)
         {
             transform.Translate(dir * Time.deltaTime * speed);

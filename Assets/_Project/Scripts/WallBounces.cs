@@ -9,7 +9,6 @@ public class WallBounces : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("HIT");
             gM.deactivationAmount++;
             gameObject.SetActive(false);
         }
