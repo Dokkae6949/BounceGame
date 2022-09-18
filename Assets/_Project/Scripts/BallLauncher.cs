@@ -87,29 +87,32 @@ public class BallLauncher : MonoBehaviour
 
         if (!camera) return;
         if (!ball) return;
-        if (!canLaunch) return;
+
 
         
-
-        if (Input.GetMouseButtonDown(0))
+        if(canLaunch)
         {
-            if(canLaunch)
+            if (Input.GetMouseButtonDown(0))
             {
-                sr.enabled = true;
+                if (canLaunch)
+                {
+                    sr.enabled = true;
+                }
+                transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
+                _start = camera.ScreenToWorldPoint(Input.mousePosition);
+                lr.enabled = true;
             }
-            transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
-            _start = camera.ScreenToWorldPoint(Input.mousePosition);
-            lr.enabled = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            if(canLaunch)
+            else if (Input.GetMouseButtonUp(0))
             {
                 var dir = _start - _end;
                 ball.AddForce(power * dir.normalized, ForceMode2D.Impulse);
                 lr.enabled = false;
+                canLaunch = false;
             }
-            canLaunch = false;
+        } else
+        {
+            sr.enabled = false;
+            lr.enabled = false;
         }
 
 
@@ -120,9 +123,9 @@ public class BallLauncher : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Legal Zone")
+        if(collision.gameObject.tag == "Legal Zone")
         {
             canLaunch = true;
         }
@@ -130,7 +133,7 @@ public class BallLauncher : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Legal Zone")
+        if (collision.gameObject.tag == "Legal Zone")
         {
             canLaunch = false;
         }
