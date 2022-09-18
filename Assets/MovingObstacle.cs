@@ -6,7 +6,7 @@ public class MovingObstacle : MonoBehaviour
 {
     public Vector2 from;
     public Vector2 to;
-    public float speed = .1f;
+    public float speed = .3f;
     Vector2 dir;
 
     bool fromOrTo = false;

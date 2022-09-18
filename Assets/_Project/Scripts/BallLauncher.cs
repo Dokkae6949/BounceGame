@@ -87,55 +87,33 @@ public class BallLauncher : MonoBehaviour
 
         if (!camera) return;
         if (!ball) return;
-
+        if (!canLaunch) return;
 
         
-        if(canLaunch)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (canLaunch)
             {
-                if (canLaunch)
-                {
-                    sr.enabled = true;
-                }
-                transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
-                _start = camera.ScreenToWorldPoint(Input.mousePosition);
-                lr.enabled = true;
+                sr.enabled = true;
             }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                var dir = _start - _end;
-                ball.AddForce(power * dir.normalized, ForceMode2D.Impulse);
-                lr.enabled = false;
-                canLaunch = false;
-            }
-        } else
-        {
-            sr.enabled = false;
-            lr.enabled = false;
+            transform.position = (Vector2)camera.ScreenToWorldPoint(Input.mousePosition);
+            _start = camera.ScreenToWorldPoint(Input.mousePosition);
+            lr.enabled = true;
         }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            var dir = _start - _end;
+            ball.AddForce(power * dir.normalized, ForceMode2D.Impulse);
+            lr.enabled = false;
+            canLaunch = false;
+        }
+        
 
 
         if (lr.enabled)
         {
             lr.SetPosition(0, _start);
             lr.SetPosition(1, new Vector3(_end.x, _end.y, 0));
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Legal Zone")
-        {
-            canLaunch = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Legal Zone")
-        {
-            canLaunch = false;
         }
     }
 
