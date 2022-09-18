@@ -73,10 +73,15 @@ PrefabInstance:
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
     - target: {fileID: 5366182562789573767, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
       propertyPath: m_Name
-      value: Obstacle
+      value: Obstacle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6876594052408455874, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6f9ba322683058c4a82b0d8c15fef794, type: 2}
     m_RemovedComponents:
     - {fileID: 5366182562789573760, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
+    - {fileID: 6876594052408455874, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f813d7396bd28464dab6a4a046af2a14, type: 3}
 --- !u!1 &7065366263067043356 stripped
 GameObject:
