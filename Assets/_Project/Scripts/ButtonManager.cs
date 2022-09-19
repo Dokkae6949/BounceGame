@@ -22,7 +22,7 @@ public class ButtonManager : MonoBehaviour
 
         for(int i = 1; i < scenes.Length; i++)
         {
-            GameObject newLvlBtn = Instantiate(levelButton, new Vector3(i * 270 - 550, 50, 0), Quaternion.identity);
+            GameObject newLvlBtn = Instantiate(levelButton, new Vector3(i * 270 - 560, 75, 0), Quaternion.identity);
             Debug.Log(new Vector3(i * 110, -20, 0));
             newLvlBtn.name = scenes[i];
             newLvlBtn.transform.parent = gameObject.transform;
