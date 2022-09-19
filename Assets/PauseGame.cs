@@ -8,12 +8,6 @@ public class PauseGame : MonoBehaviour
     public GameObject pause;
     public bool isPaused;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +16,7 @@ public class PauseGame : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause.SetActive(true);
+                Time.timeScale = 0f;
                 isPaused = true;
             }
         }
@@ -30,6 +25,7 @@ public class PauseGame : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pause.SetActive(false);
+                Time.timeScale = 1f;
                 isPaused = false;
             }
         }

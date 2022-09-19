@@ -41,8 +41,8 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadSceneAsync(level);
     }
 
-    public void EzLoadLevel()
+    public void NextScene()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
