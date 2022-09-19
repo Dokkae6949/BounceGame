@@ -102,7 +102,7 @@ public class BallLauncher : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             var dir = _start - _end;
-            ball.AddForce(power * -dir.normalized, ForceMode2D.Impulse);
+            ball.AddForce(power * dir.normalized, ForceMode2D.Impulse);
             lr.enabled = false;
             canLaunch = false;
         }
