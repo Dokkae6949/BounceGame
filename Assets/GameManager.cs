@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject[] obstacles;
     public int deactivationAmount = 0;
     public GameObject player;
+    public GameObject pauseMenu;
+    GameObject pauseInst;
+
+    private void Start()
+    {
+        transform.position = Vector3.zero;
+    }
 
     private void Update()
     {

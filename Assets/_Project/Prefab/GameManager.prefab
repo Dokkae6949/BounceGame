@@ -47,3 +47,5 @@ MonoBehaviour:
   obstacles: []
   deactivationAmount: 0
   player: {fileID: 1724004963663620565, guid: d2aaee44c7c22f5418a089c2db346af5, type: 3}
+  pauseMenu: {fileID: 4011461166489461494, guid: bc8c47a0ffa7b8c47941995dcf695e08, type: 3}
+  UI: {fileID: 0}
