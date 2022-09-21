@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class GameManager : MonoBehaviour
@@ -13,17 +14,29 @@ public class GameManager : MonoBehaviour
     GameObject pauseInst;
     public bool canDie = true;
 
+    public bool isTimerPaused = true;
+    float currentTime;
+
     private void Start()
     {
+        isTimerPaused = false;
         transform.position = Vector3.zero;
         canDie = true;
+        currentTime = 0;
     }
 
     private void Update()
     {
+
+        if(!isTimerPaused)
+        {
+            currentTime = currentTime + Time.deltaTime;
+        }
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        Debug.Log(time.Seconds + "." + time.Milliseconds);
+
         StartCoroutine(nextScene());
 
-        Debug.Log(canDie);
 
         if(deactivationAmount != obstacles.Length)
         {
@@ -51,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if (deactivationAmount == obstacles.Length)
         {
+            isTimerPaused = true;
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             deactivationAmount = 0;
