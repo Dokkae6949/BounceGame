@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -23,15 +24,18 @@ public class ButtonManager : MonoBehaviour
         for(int i = 1; i < scenes.Length; i++)
         {
             GameObject newLvlBtn = Instantiate(levelButton, Vector3.zero, Quaternion.identity);
-            Debug.Log(new Vector3(i * 110, -20, 0));
             newLvlBtn.name = scenes[i];
             newLvlBtn.transform.parent = gameObject.transform;
             Button goToScene = newLvlBtn.GetComponent<Button>();
             int x = i;
             goToScene.onClick.AddListener(delegate { LoadLevel(x); });
             GameObject LvLText = newLvlBtn.transform.GetChild(0).gameObject;
+            GameObject HighScoreText = newLvlBtn.transform.GetChild(1).gameObject;
             TextMeshProUGUI Text = LvLText.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI HighScore = HighScoreText.GetComponent<TextMeshProUGUI>();
             Text.text = scenes[x].Remove(0, 5);
+            Debug.Log(PlayerPrefs.GetInt(scenes[x]));
+            HighScore.text = Convert.ToString(PlayerPrefs.GetInt(scenes[x], 50000));
 
         }
     }

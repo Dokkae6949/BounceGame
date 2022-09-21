@@ -32,8 +32,16 @@ public class GameManager : MonoBehaviour
         {
             currentTime = currentTime + Time.deltaTime;
         }
+
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        Debug.Log(time.Seconds + "." + time.Milliseconds);
+        
+        if(Convert.ToInt32(time.Seconds * time.Milliseconds) < PlayerPrefs.GetInt(SceneManager.GetActiveScene().name, 50000))
+        {
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, Convert.ToInt32(time.Milliseconds * time.Seconds));
+        }
+
+        Debug.Log(Convert.ToInt32(time.Milliseconds * time.Seconds));
+
 
         StartCoroutine(nextScene());
 

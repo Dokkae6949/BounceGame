@@ -181,10 +181,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game by: Developer Grav#4479
+  m_text: 'Game by: Developer Grav#4479 ( Reda )
 
-    Mentor and mental support by Dokkae
-    #6949
+    Mentor and mental support by
+    Dokkae#6949
 
     Level 11 - 14 by Tony.k_11 (insta)'
   m_isRightToLeft: 0
@@ -2602,7 +2602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 181, y: 41}
+  m_AnchoredPosition: {x: 123.4, y: 41}
   m_SizeDelta: {x: 328.5697, y: 86.5436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505749484
