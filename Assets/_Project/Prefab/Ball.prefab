@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3719a62edcf6a4e936116e88667827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 769032165589877121, guid: 8602d06e7f84c074ea4c545e395d4025, type: 3}
   ball: {fileID: 1724004963663620555}
   lr: {fileID: 1724004963663620559}
   power: 15

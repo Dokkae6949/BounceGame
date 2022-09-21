@@ -26,7 +26,7 @@ public class DeathAnimationController : MonoBehaviour
         if (gameObject.tag == "Obs")
         {
             anim.SetBool("IsCircle", false);
-        }   
+        }
         anim.SetBool("IsDead", isDead);
     }
 }

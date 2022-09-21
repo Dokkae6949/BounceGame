@@ -11,19 +11,39 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject pauseMenu;
     GameObject pauseInst;
+    public bool canDie = true;
 
     private void Start()
     {
         transform.position = Vector3.zero;
+        canDie = true;
     }
 
     private void Update()
     {
         StartCoroutine(nextScene());
-        
-        if(Mathf.Abs(player.transform.position.x) > 30 || Mathf.Abs(player.transform.position.y) > 15 )
+
+        Debug.Log(canDie);
+
+        if(deactivationAmount != obstacles.Length)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            canDie = true;
+        }
+        else if(deactivationAmount == obstacles.Length)
+        {
+            canDie = false;
+        }
+
+        if(Mathf.Abs(player.transform.position.x) > 21 || Mathf.Abs(player.transform.position.y) > 12 )
+        {
+            if(canDie)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                StartCoroutine(nextScene());
+            }
         }
     }
 
