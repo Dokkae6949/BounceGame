@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class SpeedrunTimer : MonoBehaviour
 {
+    public BoardManager bM;
     public bool isTimerPaused = true;
-    float currentTime;
+    public float currentTime;
     TextMeshProUGUI timer;
 
     public string roundTime;

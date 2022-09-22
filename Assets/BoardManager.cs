@@ -5,6 +5,8 @@ using LootLocker.Requests;
 
 public class BoardManager : MonoBehaviour
 {
+    int leaderboardID = 7287;
+
     void Start()
     {
         LootLockerSDKManager.StartGuestSession((response) =>
@@ -19,4 +21,24 @@ public class BoardManager : MonoBehaviour
             Debug.Log("successfully started LootLocker session");
         });
     }
+
+    public void SubmitScoreRoutine(int scoreToUpload)
+    {
+        bool done = false;
+        string playerID = PlayerPrefs.GetString("PlayerID");
+        LootLockerSDKManager.SubmitScore(playerID, scoreToUpload, leaderboardID, (response) =>
+        {
+            if(response.success)
+            {
+                Debug.Log("Successfully uploaded score");
+                done = true;
+                return;
+            } else
+            {
+                Debug.Log("Failed" + response.Error);
+                done = true;
+            }
+        });
+    }
+
 }

@@ -7,6 +7,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public BoardManager bM;
     public GameObject[] obstacles;
     public int deactivationAmount = 0;
     public GameObject player;
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         if (deactivationAmount == obstacles.Length)
         {
             SpdTmr.StopTimer();
+            bM.SubmitScoreRoutine(Convert.ToInt32(SpdTmr.currentTime * 1000));
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             deactivationAmount = 0;
