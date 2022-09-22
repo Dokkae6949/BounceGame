@@ -34,8 +34,13 @@ public class ButtonManager : MonoBehaviour
             TextMeshProUGUI Text = LvLText.GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI HighScore = HighScoreText.GetComponent<TextMeshProUGUI>();
             Text.text = scenes[x].Remove(0, 5);
-            Debug.Log(PlayerPrefs.GetInt(scenes[x]));
-            HighScore.text = Convert.ToString(PlayerPrefs.GetInt(scenes[x], 50000));
+            if(PlayerPrefs.GetString(scenes[x] + "String") == "")
+            {
+                HighScore.text = "00:00:000";
+            } else
+            {
+                HighScore.text = PlayerPrefs.GetString(scenes[x] + "String");
+            }
 
         }
     }

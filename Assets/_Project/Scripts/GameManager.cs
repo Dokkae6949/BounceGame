@@ -13,35 +13,17 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     GameObject pauseInst;
     public bool canDie = true;
+    public SpeedrunTimer SpdTmr;
 
-    public bool isTimerPaused = true;
-    float currentTime;
 
     private void Start()
     {
-        isTimerPaused = false;
         transform.position = Vector3.zero;
         canDie = true;
-        currentTime = 0;
     }
 
     private void Update()
     {
-
-        if(!isTimerPaused)
-        {
-            currentTime = currentTime + Time.deltaTime;
-        }
-
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        
-        if(Convert.ToInt32(time.Seconds * time.Milliseconds) < PlayerPrefs.GetInt(SceneManager.GetActiveScene().name, 50000))
-        {
-            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, Convert.ToInt32(time.Milliseconds * time.Seconds));
-        }
-
-        Debug.Log(Convert.ToInt32(time.Milliseconds * time.Seconds));
-
 
         StartCoroutine(nextScene());
 
@@ -72,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (deactivationAmount == obstacles.Length)
         {
-            isTimerPaused = true;
+            SpdTmr.StopTimer();
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             deactivationAmount = 0;
