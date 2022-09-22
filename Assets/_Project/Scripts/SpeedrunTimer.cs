@@ -21,11 +21,14 @@ public class SpeedrunTimer : MonoBehaviour
     string seconds;
     string minutes;
 
+    int run_once = 0;
+
     private void Start()
     {
         timer = GetComponent<TextMeshProUGUI>();
         isTimerPaused = false;
         currentTime = 0;
+        int run_once = 0;
     }
 
     private void Update()
@@ -69,6 +72,14 @@ public class SpeedrunTimer : MonoBehaviour
     public void StopTimer()
     {
         isTimerPaused = true;
+
+        if (run_once == 0)
+        {
+            bM.SubmitScoreRoutine(Convert.ToInt32(currentTime * 1000));
+            Debug.Log("Passed!");
+            run_once = 1;
+        }
+
         if (currentTime < PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name, 50000))
         {
             PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, currentTime);
