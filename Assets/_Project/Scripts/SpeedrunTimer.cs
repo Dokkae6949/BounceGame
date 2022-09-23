@@ -72,13 +72,14 @@ public class SpeedrunTimer : MonoBehaviour
     public void StopTimer()
     {
         isTimerPaused = true;
-
+        /*
         if (run_once == 0)
         {
             bM.SubmitScoreRoutine(Convert.ToInt32(currentTime * 1000));
             Debug.Log("Passed!");
             run_once = 1;
         }
+        */
 
         if (currentTime < PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name, 50000))
         {

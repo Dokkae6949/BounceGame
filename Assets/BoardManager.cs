@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LootLocker.Requests;
 
 public class BoardManager : MonoBehaviour
 {
+    /*
     int leaderboardID = 7287;
 
     void Start()
@@ -21,7 +21,8 @@ public class BoardManager : MonoBehaviour
             Debug.Log("successfully started LootLocker session");
         });
     }
-
+    */
+    /*
     public void SubmitScoreRoutine(int scoreToUpload)
     {
         bool done = false;
@@ -40,5 +41,6 @@ public class BoardManager : MonoBehaviour
             }
         });
     }
+    */
 
 }
